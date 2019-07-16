@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "568334264800",
+    "firebase_url": "https://ab-test-flutter.firebaseio.com",
+    "project_id": "ab-test-flutter",
+    "storage_bucket": "ab-test-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568334264800:android:95774ba40b02a132",
+        "android_client_info": {
+          "package_name": "com.test.abtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568334264800-9d2if9r2p77ivuadkimm38rmlkho510t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzyFhTi3lTgSJc7xMh0sz9nBcMq8S9-E0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568334264800-9d2if9r2p77ivuadkimm38rmlkho510t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "568334264800-taggkh2542bif6lgt6jc22td8idprvql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.abTestDemo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
