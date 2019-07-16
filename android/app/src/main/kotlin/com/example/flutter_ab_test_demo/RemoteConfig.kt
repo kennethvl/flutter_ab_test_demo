@@ -21,10 +21,17 @@ class RemoteConfig() {
     }
 
     private fun handleGetString(call: MethodCall, result: MethodChannel.Result) {
-        call.argument<String>(KEY)?.let {
-            instance.fetch()
-            val data = instance.getString(it)
-            result.success(data)
+        call.argument<String>(KEY)?.let { key ->
+            instance.fetchAndActivate().addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val data = instance.getString(key)
+                    result.success(data)
+                } else {
+                    result.error("FAILED", "task fetching is not successfull", null)
+                }
+            }.addOnCanceledListener {
+                result.error("FAILED", "failed to fetch firebase", null)
+            }
         } ?: result.error("FAILED", "a key must be provided", null)
     }
 
