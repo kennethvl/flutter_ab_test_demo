@@ -5,10 +5,10 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class RemoteConfig {
+class RemoteConfig() {
 
     companion object {
-        const val GET_STRING = "getString"
+        const val GET_STRING = "fetchFirstText"
         const val KEY = "key"
     }
 
@@ -33,9 +33,13 @@ class RemoteConfig {
     fun initiateDefault() {
         instance.setDefaults(R.xml.remote_config_defautls)
         val configSettings = FirebaseRemoteConfigSettings.Builder()
-                .setDeveloperModeEnabled(BuildConfig.DEBUG)
-                .setMinimumFetchIntervalInSeconds(3600)
-                .build();
+                .setDeveloperModeEnabled(true)
+                .setMinimumFetchIntervalInSeconds(0)
+                .build()
         instance.setConfigSettings(configSettings)
+    }
+
+    init {
+        initiateDefault()
     }
 }
