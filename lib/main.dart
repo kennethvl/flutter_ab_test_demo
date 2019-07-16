@@ -1,5 +1,3 @@
-import 'package:ab_test_demo/config.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,14 +10,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FutureBuilder<RemoteConfig>(
-        future: Config().setupRemoteConfig(),
-        builder: (BuildContext context, AsyncSnapshot<RemoteConfig> snapshot) {
-          return snapshot.hasData
-              ? MyHomePage(title: 'A/B Testing Home')
-              : Container();
-        },
-      ),
+      home: MyHomePage(title: 'A/B Testing Home'),
     );
   }
 }
@@ -28,11 +19,9 @@ class MyHomePage extends StatefulWidget {
   MyHomePage({
     Key key,
     this.title,
-    this.remoteConfig,
   }) : super(key: key);
 
   final String title;
-  final RemoteConfig remoteConfig;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -42,9 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() async {
     super.initState();
-
-    await widget.remoteConfig.fetch(expiration: const Duration(seconds: 0));
-    await widget.remoteConfig.activateFetched();
   }
 
   @override
@@ -59,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Center(
             child: Container(
               child: Center(
-                child: Text(widget.remoteConfig.getString('first_text')),
+                child: Text('A/B Testing Home'),
               ),
               color: Colors.amber,
               width: MediaQuery.of(context).size.width * 2 / 3,
@@ -101,22 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
             child: RaisedButton(
               child: Text('Go to Second Detail'),
               onPressed: () {
-                if (widget.remoteConfig.getString('second_action') ==
-                    'second') {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SecondDetailPage(),
-                    ),
-                  );
-                } else {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FirstDetailPage(),
-                    ),
-                  );
-                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SecondDetailPage(),
+                  ),
+                );
               },
             ),
           )
