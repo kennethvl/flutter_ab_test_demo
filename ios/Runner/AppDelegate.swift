@@ -5,7 +5,7 @@ import UIKit
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
     private var channelManager: RemoteConfigChannelManager!
-    
+    private var mixpanel: MixpanelChannelManager!
     
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         GeneratedPluginRegistrant.register(with: self)
@@ -21,6 +21,9 @@ import UIKit
         
         channelManager = RemoteConfigChannelManager(vc: rootController)
         channelManager.setup()
+        
+        mixpanel = MixpanelChannelManager(vc: rootController)
+        mixpanel.setup()
         
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

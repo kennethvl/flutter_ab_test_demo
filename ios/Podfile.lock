@@ -59,6 +59,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.2.1):
     - GoogleUtilities/Logger
+  - Mixpanel-swift (2.6.3):
+    - Mixpanel-swift/Complete (= 2.6.3)
+  - Mixpanel-swift/Complete (2.6.3)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -70,6 +73,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/RemoteConfig
+  - Mixpanel-swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -81,6 +85,7 @@ SPEC REPOS:
     - FirebaseRemoteConfig
     - GoogleAppMeasurement
     - GoogleUtilities
+    - Mixpanel-swift
     - nanopb
     - Protobuf
 
@@ -93,9 +98,10 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 7c64ecec5ca63d7c6b304509c3a6f9a036d403d4
   GoogleAppMeasurement: a35a645835bae31b6bdc0576396bc23908f12a22
   GoogleUtilities: c7a0b08bda3bf808be823ed151f0e28ac6866e71
+  Mixpanel-swift: b022ad6cc352f916581b4f223f8a1e76d047fbe3
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
 
-PODFILE CHECKSUM: 602c5d5a036c2b8d3b8735e9d05697bc0e9f67f2
+PODFILE CHECKSUM: 44c03c4492694d4967a541e08bc288c95e02bb51
 
 COCOAPODS: 1.7.2

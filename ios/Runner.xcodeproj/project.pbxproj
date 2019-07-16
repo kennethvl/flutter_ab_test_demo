@@ -21,6 +21,8 @@
 		9FB9B47722DD9EE00048454A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9FB9B47622DD9EE00048454A /* GoogleService-Info.plist */; };
 		9FB9B47922DDC4B00048454A /* RCValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B47822DDC4B00048454A /* RCValues.swift */; };
 		9FB9B47B22DDC8820048454A /* RemoteConfigChannelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B47A22DDC8820048454A /* RemoteConfigChannelManager.swift */; };
+		9FB9B47D22DDEB040048454A /* MixpanelChannelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B47C22DDEB040048454A /* MixpanelChannelManager.swift */; };
+		9FB9B47F22DDEBC60048454A /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB9B47E22DDEBC60048454A /* AnalyticsManager.swift */; };
 		A181355959C480D15FB725B4 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542B9C9BE5FAEEAB5EFA4ADD /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		9FB9B47622DD9EE00048454A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9FB9B47822DDC4B00048454A /* RCValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCValues.swift; sourceTree = "<group>"; };
 		9FB9B47A22DDC8820048454A /* RemoteConfigChannelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigChannelManager.swift; sourceTree = "<group>"; };
+		9FB9B47C22DDEB040048454A /* MixpanelChannelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixpanelChannelManager.swift; sourceTree = "<group>"; };
+		9FB9B47E22DDEBC60048454A /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		ADD1FA6C0708E9C5FA1B655C /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		C608DE62A03EC8B784B1486B /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,18 +135,20 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
-				9FB9B47622DD9EE00048454A /* GoogleService-Info.plist */,
+				9FB9B47E22DDEBC60048454A /* AnalyticsManager.swift */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
+				9FB9B47622DD9EE00048454A /* GoogleService-Info.plist */,
 				97C147021CF9000F007C117D /* Info.plist */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
-				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
-				97C146F11CF9000F007C117D /* Supporting Files */,
+				9FB9B47C22DDEB040048454A /* MixpanelChannelManager.swift */,
 				9FB9B47822DDC4B00048454A /* RCValues.swift */,
 				9FB9B47A22DDC8820048454A /* RemoteConfigChannelManager.swift */,
+				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				97C146F11CF9000F007C117D /* Supporting Files */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -288,12 +294,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mixpanel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -309,9 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FB9B47F22DDEBC60048454A /* AnalyticsManager.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				9FB9B47B22DDC8820048454A /* RemoteConfigChannelManager.swift in Sources */,
+				9FB9B47D22DDEB040048454A /* MixpanelChannelManager.swift in Sources */,
 				9FB9B47922DDC4B00048454A /* RCValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

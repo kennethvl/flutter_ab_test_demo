@@ -1,3 +1,4 @@
+import 'package:ab_test_demo/mixpanel_channel.dart';
 import 'package:ab_test_demo/remote_config_channel.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   RemoteConfigChannel _channel = RemoteConfigChannel();
+  MixpanelChannel _mixpanelChannel = MixpanelChannel();
+
   String firstText = '';
 
   @override
@@ -42,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
     print('kepanggil');
 
     _channel.getFirstTextString().then((value) {
+      _mixpanelChannel.trackFirstStringVariation(text: value);
+
       setState(() {
         firstText = value;
       });

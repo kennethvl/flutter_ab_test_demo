@@ -9,4 +9,5 @@ target 'Runner' do
   pod 'Firebase/Core'
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
+  pod 'Mixpanel-swift'
 end
