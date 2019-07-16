@@ -41,10 +41,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void fetchRemoteData() async {
     print('kepanggil');
 
-    final results = await _channel.getFirstTextString();
-
-    setState(() {
-      firstText = results;
+    _channel.getFirstTextString().then((value) {
+      setState(() {
+        firstText = value;
+      });
+    }).catchError((error) {
+      // Call crashlytics
+      setState(() {
+        firstText = error.toString();
+      });
     });
   }
 
