@@ -1,3 +1,4 @@
+import 'package:ab_test_demo/remote_config_channel.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -28,9 +29,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  RemoteConfigChannel _channel = RemoteConfigChannel();
+  String firstText = '';
+
   @override
-  void initState() async {
+  void initState() {
     super.initState();
+    this.fetchRemoteData();
+  }
+
+  void fetchRemoteData() async {
+    print('kepanggil');
+
+    final results = await _channel.getFirstTextString();
+
+    setState(() {
+      firstText = results;
+    });
   }
 
   @override
@@ -45,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Center(
             child: Container(
               child: Center(
-                child: Text('A/B Testing Home'),
+                child: Text(firstText),
               ),
               color: Colors.amber,
               width: MediaQuery.of(context).size.width * 2 / 3,
