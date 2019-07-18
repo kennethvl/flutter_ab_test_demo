@@ -2,7 +2,9 @@ import 'package:ab_test_demo/mixpanel_channel.dart';
 import 'package:ab_test_demo/remote_config_channel.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'app.dart';
+
+void main() => runApp(App());
 
 class MyApp extends StatelessWidget {
   @override

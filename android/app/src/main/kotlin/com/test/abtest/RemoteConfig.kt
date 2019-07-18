@@ -1,11 +1,11 @@
-package com.example.flutter_ab_test_demo
+package com.test.abtest
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
-class RemoteConfig() {
+class RemoteConfig {
 
     companion object {
         const val GET_STRING = "fetchFirstText"
