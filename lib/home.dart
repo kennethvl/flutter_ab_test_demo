@@ -35,8 +35,8 @@ class BodyState extends State<Body> {
   void initState() {
     super.initState();
     instance = DynamicLink();
-    linkController.text = 'https://sebastianusk.page.link';
-    prefixController.text = 'https://sebastianusk.page.link';
+    linkController.text = 'https://fazzcard.com';
+    prefixController.text = 'https://fazzcard.page.link';
   }
 
   void generate() {

@@ -1,6 +1,7 @@
-package com.test.abtest
+package com.fazzcard.android
 
 import android.os.Bundle
+import com.fazzcard.android.Deeplink
 
 import io.flutter.app.FlutterActivity
 import io.flutter.plugin.common.MethodChannel
@@ -11,15 +12,14 @@ class MainActivity : FlutterActivity() {
     private val AB_TEST_CHANNEL = "ab-test"
     private val DYNAMIC_LINK_CHANNEL = "dynamic-link"
     private val remoteConfig = RemoteConfig()
-    private val dynamicLink = Deeplink()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dynamicLink.handleIntent(this, intent)
-
         GeneratedPluginRegistrant.registerWith(this)
         MethodChannel(flutterView, AB_TEST_CHANNEL).setMethodCallHandler(remoteConfig.handleCall)
-        MethodChannel(flutterView, DYNAMIC_LINK_CHANNEL).setMethodCallHandler(dynamicLink.handleCall)
+        BaseApplication.runBaseApplication(this) {
+            MethodChannel(flutterView, DYNAMIC_LINK_CHANNEL).setMethodCallHandler(dynamicLink.handleCall)
+        }
     }
 }

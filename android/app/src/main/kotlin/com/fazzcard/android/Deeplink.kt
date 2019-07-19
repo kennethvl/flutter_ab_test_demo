@@ -1,6 +1,5 @@
-package com.test.abtest
+package com.fazzcard.android
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import com.google.firebase.dynamiclinks.DynamicLink
@@ -17,7 +16,7 @@ class Deeplink {
         const val DOMAIN_URI_PREFIX = "prefix"
     }
 
-    fun handleIntent(context: Context, intent: Intent) {
+    fun handleIntent(intent: Intent) {
         instance.getDynamicLink(intent)
                 .addOnSuccessListener {
                     it?.let {
@@ -26,17 +25,21 @@ class Deeplink {
                 }
     }
 
-    private val instance = FirebaseDynamicLinks.getInstance()
+    lateinit var instance: FirebaseDynamicLinks
+    fun initialize() {
+        instance = FirebaseDynamicLinks.getInstance()
+    }
+
     private var uri = ""
     val handleCall = MethodChannel.MethodCallHandler { call, result ->
         when (call.method) {
             GENERATE -> generate(call, result)
-            INTENT -> getIntent(call, result)
+            INTENT -> getIntent(result)
             else -> result.error("FAILED", "method ${call.method} not implemented", null)
         }
     }
 
-    private fun getIntent(call: MethodCall, result: MethodChannel.Result) {
+    private fun getIntent(result: MethodChannel.Result) {
         result.success(uri)
     }
 

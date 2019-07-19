@@ -1,4 +1,4 @@
-package com.test.abtest
+package com.fazzcard.android
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
