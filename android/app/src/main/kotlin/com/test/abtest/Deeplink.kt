@@ -11,9 +11,8 @@ import io.flutter.plugin.common.MethodChannel
 class Deeplink {
 
     companion object {
-
-
         const val GENERATE = "generate"
+        const val INTENT = "intent"
         const val LINK = "link"
         const val DOMAIN_URI_PREFIX = "prefix"
     }
@@ -22,20 +21,23 @@ class Deeplink {
         instance.getDynamicLink(intent)
                 .addOnSuccessListener {
                     it?.let {
-                        val uri = it.link.toString()
-                        val mainIntent = Intent(context, MainActivity::class.java)
-                        mainIntent.putExtra("URI", uri)
-                        context.startActivity(mainIntent)
+                        uri = it.link.toString()
                     }
                 }
     }
 
     private val instance = FirebaseDynamicLinks.getInstance()
+    private var uri = ""
     val handleCall = MethodChannel.MethodCallHandler { call, result ->
         when (call.method) {
             GENERATE -> generate(call, result)
+            INTENT -> getIntent(call, result)
             else -> result.error("FAILED", "method ${call.method} not implemented", null)
         }
+    }
+
+    private fun getIntent(call: MethodCall, result: MethodChannel.Result) {
+        result.success(uri)
     }
 
     private fun generate(call: MethodCall, result: MethodChannel.Result) {

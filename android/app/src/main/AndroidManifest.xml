@@ -37,10 +37,5 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity android:name=".DeeplinkActivity">
-            <intent-filter>
-
-            </intent-filter>
-        </activity>
     </application>
 </manifest>

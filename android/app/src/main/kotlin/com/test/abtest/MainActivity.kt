@@ -15,6 +15,9 @@ class MainActivity : FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        dynamicLink.handleIntent(this, intent)
+
         GeneratedPluginRegistrant.registerWith(this)
         MethodChannel(flutterView, AB_TEST_CHANNEL).setMethodCallHandler(remoteConfig.handleCall)
         MethodChannel(flutterView, DYNAMIC_LINK_CHANNEL).setMethodCallHandler(dynamicLink.handleCall)

@@ -28,6 +28,7 @@ class BodyState extends State<Body> {
   TextEditingController generatedLink = TextEditingController();
   TextEditingController linkController = TextEditingController();
   TextEditingController prefixController = TextEditingController();
+  TextEditingController intentUrl = TextEditingController();
   DynamicLink instance;
 
   @override
@@ -67,8 +68,24 @@ class BodyState extends State<Body> {
             onPressed: generate,
           ),
           TextField(controller: generatedLink),
+          Text('Intent Here'),
+          RaisedButton(
+            child: Text('Get Intent!'),
+            onPressed: getIntent,
+          ),
+          TextField(
+            controller: intentUrl,
+          ),
         ],
       ),
     );
+  }
+
+  getIntent() {
+    instance.getIntent().then((value) {
+      intentUrl.text = value;
+    }).catchError((err) {
+      intentUrl.text = err;
+    });
   }
 }

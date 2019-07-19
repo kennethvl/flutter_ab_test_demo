@@ -12,4 +12,8 @@ class DynamicLink {
       return data;
     });
   }
+
+  Future<String> getIntent() {
+    return platform.invokeMethod('intent');
+  }
 }
